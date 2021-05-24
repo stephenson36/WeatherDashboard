@@ -6,21 +6,21 @@ let mainWind = document.getElementById('wind-main');
 let mainHumidity = document.getElementById('humidity-main');
 let mainUV = document.getElementById('uv-main');
 
+
 function Main(event) {
     event.preventDefault();
-
-    getWeather('33.4','-94.0');
+    let cityName = cityInput.value;
+    getLatLon(cityName);
 }
 
 
-function getWeather (lat,lon) {
+function getWeather (cityName,lat,lon) {
    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=e65fe780f45a130b2c4b730b4f4601f3`)
     .then(function (response) {
         return response.json();
     })
     .then(function (data) {
         console.log(data);
-        let cityName = cityInput.value;
         let unixDate = new Date(data.current.dt*1000);
         let day = unixDate.getDate();
         let month = unixDate.getMonth();
@@ -58,7 +58,19 @@ function getWeather (lat,lon) {
             startDate = startDate + 1
         }
 
+    });
+}
 
+function getLatLon(city) {
+    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=e65fe780f45a130b2c4b730b4f4601f3`)
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        console.log(data);
+        let lat = data[0].lat;
+        let lon = data[0].lon;
+        getWeather(city,lat,lon);
     });
 }
 
