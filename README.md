@@ -11,7 +11,7 @@ The Weather Dashboard contains the following features:
 
 See below for a preview of the web page:
 
-![The final webpage should appear as shown here](./assets/images/webpage-example.png)
+![The final webpage should appear as shown here](./assets/images/webpage-example.PNG)
 
 ## Links
 

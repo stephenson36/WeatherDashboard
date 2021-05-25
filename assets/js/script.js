@@ -61,7 +61,7 @@ function getWeather (cityName,lat,lon) {
 }
 
 function getLatLon(city) {
-    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=e65fe780f45a130b2c4b730b4f4601f3`)
+    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=e65fe780f45a130b2c4b730b4f4601f3`)
     .then(function (response) {
         return response.json();
     })
